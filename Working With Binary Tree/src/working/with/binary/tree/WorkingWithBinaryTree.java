@@ -42,7 +42,9 @@ public class WorkingWithBinaryTree {
          System.out.println("\n\nMinimum value: "+ minimumValue(eight));
          System.out.println("\n\nMaximum value: "+ maxminumValue(eight));
          
-         printInRange(eight, 3, 10);
+         printInRange(eight, 3, 10); 
+         
+         System.out.println("\n\n Tree is BST :" + isBinarySearchTree(eight));
 
         
     }
@@ -147,6 +149,22 @@ public class WorkingWithBinaryTree {
             printInRange(root.getRightChild(), low, high);
         }
         
+    }
+    public static boolean isBinarySearchTree(Node<Integer> root){
+        if(root==null)
+            return true;
+        if(root.getLeftChild()!=null){
+            if(root.getLeftChild().getData()> root.getData()){
+                return false;
+            }
+        }
+        
+        if(root.getRightChild()!=null){
+            if(root.getRightChild().getData()<= root.getData()){
+                return false;
+            }
+        }
+        return isBinarySearchTree(root.getLeftChild()) && isBinarySearchTree(root.getRightChild());
     }
     
 }
