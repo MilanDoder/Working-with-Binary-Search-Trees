@@ -29,7 +29,15 @@ public class WorkingWithBinaryTree {
         System.out.println("\n\n");
         
         insert(eight, 4);
-                inOrder(eight);
+         inOrder(eight);
+         insert(eight, 15);
+         insert(eight, 12);
+         insert(eight, 5);
+         insert(eight, 6);
+         
+         inOrder(eight);
+         System.out.println();
+         lookup(eight, 12);
 
         
     }
@@ -82,6 +90,21 @@ public class WorkingWithBinaryTree {
         System.out.print(root +" --> ");
         inOrder(root.getRightChild());
     
+    }
+    
+    public static Node<Integer> lookup(Node<Integer> root, int data){
+        if(root==null)
+            return null;
+        
+        if(root.getData()==data)
+            return root;
+        if(data < root.getData()){
+            System.out.println(data + " <=" + root.getData() + " looking in the left child");
+            return lookup(root.getLeftChild(), data);
+        }else{
+                    System.out.println(data + " >" + root.getData() + " looking in the right child");
+           return  lookup(root.getRightChild(), data);
+        }        
     }
     
 }
