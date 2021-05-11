@@ -38,6 +38,9 @@ public class WorkingWithBinaryTree {
          inOrder(eight);
          System.out.println();
          lookup(eight, 12);
+         
+         System.out.println("\n\nMinimum value: "+ minimumValue(eight));
+         System.out.println("\n\nMaximum value: "+ maxminumValue(eight));
 
         
     }
@@ -80,8 +83,7 @@ public class WorkingWithBinaryTree {
                 queue.add(new Pair<>(rightChild, level));
         }
     
-    }
-    
+    }    
     public static <T> void inOrder(Node<T> root){
         if(root==null)
             return;
@@ -90,8 +92,7 @@ public class WorkingWithBinaryTree {
         System.out.print(root +" --> ");
         inOrder(root.getRightChild());
     
-    }
-    
+    }    
     public static Node<Integer> lookup(Node<Integer> root, int data){
         if(root==null)
             return null;
@@ -105,6 +106,25 @@ public class WorkingWithBinaryTree {
                     System.out.println(data + " >" + root.getData() + " looking in the right child");
            return  lookup(root.getRightChild(), data);
         }        
+    }    
+    public static Integer minimumValue(Node<Integer> root){
+        int  minValue = Integer.MAX_VALUE;
+        
+        while(root!=null){
+            minValue = root.getData();
+            root= root.getLeftChild();
+        }        
+        return minValue;
+    }
+    public static Integer maxminumValue(Node<Integer> root){
+        int maxValue = Integer.MIN_VALUE;
+        
+        while(root!=null){
+            maxValue =  root.getData();
+            root= root.getRightChild();        
+        }
+        return maxValue;
+    
     }
     
 }
