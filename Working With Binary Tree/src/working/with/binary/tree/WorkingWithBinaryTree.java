@@ -41,6 +41,8 @@ public class WorkingWithBinaryTree {
          
          System.out.println("\n\nMinimum value: "+ minimumValue(eight));
          System.out.println("\n\nMaximum value: "+ maxminumValue(eight));
+         
+         printInRange(eight, 3, 10);
 
         
     }
@@ -125,6 +127,26 @@ public class WorkingWithBinaryTree {
         }
         return maxValue;
     
+    }
+    public static  <T> void printInRange(Node<Integer> root, int low, int high){
+        if(root==null)
+            return;
+        if(low>=high){
+            return;
+        }
+        
+        if(low<=root.getData()){
+            printInRange(root.getLeftChild(), low, high);
+        }
+        
+        if(low<= root.getData() && root.getData()<=high){
+            System.out.println(root.getData());
+        }
+        
+        if(high> root.getData()){
+            printInRange(root.getRightChild(), low, high);
+        }
+        
     }
     
 }
